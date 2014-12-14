@@ -20,6 +20,6 @@ namespace F1Tippspiel.Db.Game
 
         public string Picture { get; set; }
 
-        public Race Race { get; set; }
+        public virtual Race Race { get; set; }
     }
 }

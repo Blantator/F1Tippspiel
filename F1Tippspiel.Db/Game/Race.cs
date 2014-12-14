@@ -13,8 +13,6 @@ namespace F1Tippspiel.Db.Game
 
         public string Picture { get; set; }
 
-        public TYPE Type { get; set; }
-
         public DateTime Qualifying { get; set; }
         public DateTime RaceTime { get; set; }
     }

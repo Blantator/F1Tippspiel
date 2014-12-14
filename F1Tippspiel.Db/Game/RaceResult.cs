@@ -16,9 +16,9 @@ namespace F1Tippspiel.Db.Game
         [Key]
         public int Id { get; set; }
 
-        public Race Race { get; set; }
+        public virtual Race Race { get; set; }
 
-        public Driver Driver { get; set; }
+        public virtual Driver Driver { get; set; }
 
         /// <summary>
         /// The Position achieved by the driver 

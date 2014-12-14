@@ -49,6 +49,7 @@
     <Compile Include="Account\UserAccount.cs" />
     <Compile Include="Communication\Comment.cs" />
     <Compile Include="Communication\UserMessage.cs" />
+    <Compile Include="Data\AppDb.cs" />
     <Compile Include="Game\Club.cs" />
     <Compile Include="Game\Driver.cs" />
     <Compile Include="Game\Race.cs" />
