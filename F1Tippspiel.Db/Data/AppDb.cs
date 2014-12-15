@@ -16,7 +16,8 @@ namespace F1Tippspiel.Db.Data
 
         public AppDb(string connection)
         {
-            
+            //todo: add overide
+            String a = "";
         }
     }
 }
