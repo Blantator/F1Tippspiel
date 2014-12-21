@@ -12,7 +12,7 @@ namespace F1Tippspiel.Db.Rewards
     /// Achievements are small prizes users can get for using the app.
     /// like logging in 100 times.
     /// </summary>
-    class Achievement
+    public class Achievement
     {
         [Key]
         public int AchievementId { get; set; }

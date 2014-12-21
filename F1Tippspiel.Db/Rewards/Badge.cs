@@ -12,7 +12,7 @@ namespace F1Tippspiel.Db.Rewards
     /// Reprsents a badge which a user can earn for completing relatively complex tasks
     /// like winning a season
     /// </summary>
-    class Badge
+    public class Badge
     {
         [Key]
         public int BadgeId { get; set; }

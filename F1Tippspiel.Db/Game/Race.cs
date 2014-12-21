@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace F1Tippspiel.Db.Game
 {
-    class Race
+    public class Race
     {
         [Key]
         public int RaceId { get; set; }

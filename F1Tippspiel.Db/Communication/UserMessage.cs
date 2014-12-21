@@ -12,7 +12,7 @@ namespace F1Tippspiel.Db.Communication
     /// Represents a message sent from  user to a different user.
     /// Comparable to an E-Mail
     /// </summary>
-    class UserMessage
+    public class UserMessage
     {
         [Key]
         public int MessageId { get; set; }

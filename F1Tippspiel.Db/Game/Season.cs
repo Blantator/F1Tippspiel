@@ -12,7 +12,7 @@ namespace F1Tippspiel.Db.Game
     /// Represents a whole f1-season 
     /// Including all races, tracks, clubs, drivers and players
     /// </summary>
-    class Season
+    public class Season
     {
         [Key]
         public int SeasonId { get; set; }

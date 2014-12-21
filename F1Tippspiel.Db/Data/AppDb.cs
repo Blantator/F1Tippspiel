@@ -12,7 +12,7 @@ using F1Tippspiel.Db.Rewards;
 
 namespace F1Tippspiel.Db.Data
 {
-    class AppDb : DbContext
+    public class AppDb : DbContext
     {
         public AppDb() : base("F1Db"){}
 

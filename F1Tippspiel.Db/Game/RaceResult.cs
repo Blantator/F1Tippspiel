@@ -11,7 +11,7 @@ namespace F1Tippspiel.Db.Game
     /// Represents one result for one driver for a specific race or qualifying
     /// A full race or qualifying result contains several of this objects 
     /// </summary>
-    class RaceResult
+    public class RaceResult
     {
         [Key]
         public int Id { get; set; }

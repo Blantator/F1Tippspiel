@@ -10,7 +10,7 @@ namespace F1Tippspiel.Db.Game
     /// <summary>
     /// Represents a f1-racing-club
     /// </summary>
-    class Club
+    public class Club
     {
         [Key]
         public int ClubId { get; set; }

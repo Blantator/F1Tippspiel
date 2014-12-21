@@ -8,7 +8,7 @@ using F1Tippspiel.Db.Rewards;
 
 namespace F1Tippspiel.Db.Account
 {
-    class UserAccount
+    public class UserAccount
     {
         [Key]
         public int UserId { get; set; }

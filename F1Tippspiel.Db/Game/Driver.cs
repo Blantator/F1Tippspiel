@@ -10,7 +10,7 @@ namespace F1Tippspiel.Db.Game
     /// <summary>
     /// Represents a f1-driver
     /// </summary>
-    class Driver
+    public class Driver
     {
         [Key]
         public int DriverId { get; set; }

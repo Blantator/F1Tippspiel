@@ -12,7 +12,7 @@ namespace F1Tippspiel.Db.Communication
     /// Represents a comment created by a user 
     /// Comments are allowed at different places.
     /// </summary>
-    class Comment
+    public class Comment
     {
         [Key]
         public int CommentId { get; set; }

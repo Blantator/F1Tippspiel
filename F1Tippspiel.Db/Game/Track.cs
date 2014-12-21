@@ -11,7 +11,7 @@ namespace F1Tippspiel.Db.Game
     /// <summary>
     /// Represents a track on which a race can take place
     /// </summary>
-    class Track
+    public class Track
     {
         [Key]
         public int TrackId { get; set; }

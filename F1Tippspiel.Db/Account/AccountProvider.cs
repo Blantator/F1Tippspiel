@@ -9,7 +9,7 @@ namespace F1Tippspiel.Db.Account
     /// <summary>
     /// Represents a connection to a identity provider like google, facebook or twitter
     /// </summary>
-    class AccountProvider
+    public class AccountProvider
     {
         public int AccountProviderId { get; set; }
         public string ProviderSpecificId { get; set; }
