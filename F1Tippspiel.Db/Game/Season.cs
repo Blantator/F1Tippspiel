@@ -20,6 +20,7 @@ namespace F1Tippspiel.Db.Game
         public int Year { get; set; }
 
         public virtual ICollection<UserAccount> Players { get; set; }
-        public virtual ICollection<Driver> Drivers { get; set; }
+        public virtual ICollection<Club> Clubs { get; set; }
+        public virtual ICollection<Track> Tracks{ get; set; }
     }
 }

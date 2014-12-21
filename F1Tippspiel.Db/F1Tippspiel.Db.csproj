@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AccountProvider.cs" />
     <Compile Include="Account\UserAccount.cs" />
     <Compile Include="Communication\Comment.cs" />
     <Compile Include="Communication\UserMessage.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Game\RaceResult.cs" />
     <Compile Include="Game\Season.cs" />
     <Compile Include="Game\Track.cs" />
+    <Compile Include="Initializer\BasicInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rewards\Achievement.cs" />
     <Compile Include="Rewards\Badge.cs" />
