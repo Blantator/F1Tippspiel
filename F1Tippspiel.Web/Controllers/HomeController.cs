@@ -10,11 +10,22 @@ namespace F1Tippspiel.Web.Controllers
 {
     public class HomeController : Controller
     {
+        AppDb _db;
+
+        public HomeController()
+        {
+            _db = new AppDb();
+        }
+
+        public HomeController(AppDb db)
+        {
+            _db = db;
+        }
+
         // GET: Home
         public ActionResult Index()
         {
-            AppDb db = new AppDb();
-            Debug.WriteLine(db.Tracks.ToList());
+            Debug.WriteLine(_db.Tracks.ToList());
             return View();
         }
     }

@@ -35,7 +35,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Effort">
+      <HintPath>..\packages\Effort.EF6.1.1.2\lib\net45\Effort.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="NMemory">
+      <HintPath>..\packages\NMemory.1.0.1\lib\net45\NMemory.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,8 +65,30 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup\DbSetup.cs" />
+    <Compile Include="Setup\Initializer.cs" />
+    <Compile Include="Web\HomeControllerTest.cs" />
+    <Compile Include="Web\WebDbInitializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\F1Tippspiel.Api\F1Tippspiel.Api.csproj">
+      <Project>{69832bf3-8329-475e-8d7b-07bb4e020534}</Project>
+      <Name>F1Tippspiel.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\F1Tippspiel.Db\F1Tippspiel.Db.csproj">
+      <Project>{6bf5f2d3-8750-4ffc-9660-cb56e78be5a1}</Project>
+      <Name>F1Tippspiel.Db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\F1Tippspiel.Web\F1Tippspiel.Web.csproj">
+      <Project>{0c423155-4718-4c01-9200-b617305c1f50}</Project>
+      <Name>F1Tippspiel.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
