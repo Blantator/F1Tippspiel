@@ -13,9 +13,11 @@ namespace F1Tippspiel.Db.Account
         [Key]
         public int UserId { get; set; }
 
-        //public virtual AccountProvider AccountProvider { get; set; }
+        public IdentityProvider AccountProvider { get; set; }
+        public string UniqueId { get; set; }
 
         public string Name { get; set; }
+        public string Picture { get; set; }
         public string DisplayName { get; set; }
 
         public string Email { get; set; }
