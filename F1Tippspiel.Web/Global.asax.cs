@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using F1Tippspiel.Web.App_Start;
+using System.Web.Optimization;
 
 namespace F1Tippspiel.Web
 {
@@ -15,6 +16,8 @@ namespace F1Tippspiel.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             DbConfig.RegisterDatabase();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BootstrapBundleConfig.RegisterBundles();
         }
     }
 }

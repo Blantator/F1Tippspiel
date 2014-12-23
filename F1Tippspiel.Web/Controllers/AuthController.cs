@@ -59,7 +59,7 @@ namespace F1Tippspiel.Web.Controllers
                     DisplayName = me.DisplayName,
                     Picture = me.Image.Url,
                     UniqueId = me.Id,
-                    Provder = IdentityProvider.Google
+                    Provider = IdentityProvider.Google
                 };
                 TempData["newProfile"] = profile; 
                 return RedirectToAction("register", "account");
@@ -109,7 +109,7 @@ namespace F1Tippspiel.Web.Controllers
                     DisplayName = user.ScreenName,
                     Picture = user.ProfileImageUrl,
                     UniqueId = user.Id.ToString(),
-                    Provder = IdentityProvider.Twitter
+                    Provider = IdentityProvider.Twitter
                 };
                 TempData["newProfile"] = profile;
                 return RedirectToAction("register", "account");
