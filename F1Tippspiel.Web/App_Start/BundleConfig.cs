@@ -29,6 +29,9 @@ namespace F1Tippspiel.Web.App_Start
 
             bundles.Add(new StyleBundle("~/Content/agency").Include("~/Content/agency.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                        "~/Scripts/angular/angular*"));
+
             // Festlegen von "EnableOptimizations" auf "false" für Debugzwecke. Weitere Informationen
             // finden Sie unter "http://go.microsoft.com/fwlink/?LinkId=301862".
             BundleTable.EnableOptimizations = true;
