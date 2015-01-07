@@ -156,7 +156,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\agency.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -181,6 +180,8 @@
     <Content Include="Scripts\angular\angular-csp.css" />
     <Content Include="Scripts\angular\angular-loader.js" />
     <Content Include="Scripts\angular\angular-loader.min.js" />
+    <Content Include="Scripts\angular\angular-local-storage.js" />
+    <Content Include="Scripts\angular\angular-local-storage.min.js" />
     <Content Include="Scripts\angular\angular-messages.js" />
     <Content Include="Scripts\angular\angular-messages.min.js" />
     <Content Include="Scripts\angular\angular-mocks.js" />
@@ -195,6 +196,10 @@
     <Content Include="Scripts\angular\angular-touch.min.js" />
     <Content Include="Scripts\angular\angular.js" />
     <Content Include="Scripts\angular\angular.min.js" />
+    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\config\routing.js" />
+    <Content Include="Scripts\app\controllers\homeController.js" />
+    <Content Include="Scripts\app\directives\ui-bootstrap-tpls-0.12.0.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_de.js" />
@@ -256,6 +261,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_BootstrapLayout.cshtml" />
     <Content Include="Views\Shared\_StartpageLayout.cshtml" />
+    <Content Include="Views\Home\_index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -266,6 +272,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\app\filters\" />
+    <Folder Include="Scripts\app\services\" />
     <Folder Include="Views\Auth\" />
   </ItemGroup>
   <ItemGroup>
