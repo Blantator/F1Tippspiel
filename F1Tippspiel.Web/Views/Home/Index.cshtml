@@ -1,61 +1,6 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="F1 Tippspiel">
-    <meta name="author" content="Sebastian Gross">
-    <link rel="icon" href="../../favicon.ico">
+﻿@model dynamic
 
-    <title>F1 Tippspiel 2015</title>
-
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/bootstrap")
-    @Styles.Render("~/Content/font-awesome")
-    @Scripts.Render("~/bundles/modernizr")
-
-    <!-- Custom styles for this template -->
-    <style type="text/css">
-        body {
-          padding-top: 20px;
-          padding-bottom: 20px;
-          background-image: url("../../Content/static/img/splash-bg.jpg");
-          background-size: cover;
-          background-repeat: no-repeat;
-        }
-
-        .message-display {
-            opacity: 0.5;
-            text-align: center;
-        }
-
-        .navbar {
-          margin-bottom: 20px;
-        }
-        .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-    </style>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-    <div class="container" data-ng-app="tippspiel">
-        <div data-ng-view="">
-
-
-        </div> <!-- /container -->
-    </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/app")
-</body>
-</html>
+@{
+    ViewBag.Title = "Startpage";
+    Layout = "~/Views/Shared/_StartpageLayout.cshtml";
+}

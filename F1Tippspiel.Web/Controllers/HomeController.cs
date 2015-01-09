@@ -53,10 +53,5 @@ namespace F1Tippspiel.Web.Controllers
 
             return View();
         }
-
-        public ActionResult start()
-        {
-            return PartialView("_index");
-        }
     }
 }
