@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using F1Tippspiel.Db.Rewards;
+using F1Tippspiel.Db.Game;
 
 namespace F1Tippspiel.Db.Account
 {
@@ -13,15 +14,11 @@ namespace F1Tippspiel.Db.Account
         [Key]
         public int UserId { get; set; }
 
-        public IdentityProvider AccountProvider { get; set; }
-        public string UniqueId { get; set; }
-
-        public string Name { get; set; }
         public string Picture { get; set; }
         public string DisplayName { get; set; }
 
+        public string Password { get; set; }
         public string Email { get; set; }
-        public string NotificationEmail { get; set; }
 
         public bool Admin { get; set; }
         public bool Enabled { get; set; }
@@ -31,6 +28,6 @@ namespace F1Tippspiel.Db.Account
 
         public virtual ICollection<Achievement> Achievements { get; set; }
         public virtual ICollection<Badge> Badges { get; set; }
-
+        public virtual ICollection<RaceBet> RaceBets { get; set; }
     }
 }

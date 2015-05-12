@@ -48,15 +48,15 @@ namespace F1Tippspiel.Db.Initializer
             UserAccount admin = new UserAccount()
             {
                 Admin = true,
-                DisplayName = "admin",
-                Email = "email@admin.com",
+                DisplayName = "bigbasti",
+                Email = "bigbasti@gmail.com",
                 LastSeen = DateTime.Now,
-                Enabled = true,
-                Name = "Mr Admin",
-                NotificationEmail = "email@admin.com",
                 Registered = DateTime.Now,
-                Achievements = new Collection<Achievement>(),
-                Badges = new Collection<Badge>()
+                Enabled = true,
+                Password = "tobehashed",
+                Achievements = new LinkedList<Achievement>(),
+                RaceBets = new LinkedList<RaceBet>(),
+                Badges = new LinkedList<Badge>()
             };
 
             Race melRace = new Race()

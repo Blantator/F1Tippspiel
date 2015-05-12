@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
-namespace F1Tippspiel.Web.App_Start
+namespace F1Tippspiel.Web
 {
     public class BundleConfig
     {
@@ -27,10 +23,16 @@ namespace F1Tippspiel.Web.App_Start
 
             bundles.Add(new StyleBundle("~/Content/font-awesome").Include("~/Content/font-awesome.css"));
 
-            bundles.Add(new StyleBundle("~/Content/agency").Include("~/Content/agency.css"));
-
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scripts/angular/angular*"));
+                        "~/Scripts/angular/angular.*",
+                        "~/Scripts/angular/angular-route*",
+                        "~/Scripts/angular/angular-loader*",
+                        "~/Scripts/angular/angular-resource*",
+                        "~/Scripts/angular/angular-local-storage*",
+                        "~/Scripts/angular/i18n/angular-locale_de.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory(
+                        "~/Scripts/app", "*.js", true));
 
             // Festlegen von "EnableOptimizations" auf "false" für Debugzwecke. Weitere Informationen
             // finden Sie unter "http://go.microsoft.com/fwlink/?LinkId=301862".

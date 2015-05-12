@@ -45,8 +45,6 @@ namespace F1Tippspiel.Test.Web
                 Email = "email@admin.com",
                 LastSeen = DateTime.Now,
                 Enabled = true,
-                Name = "Mr Admin",
-                NotificationEmail = "email@admin.com",
                 Registered = DateTime.Now,
                 Achievements = new Collection<Achievement>(),
                 Badges = new Collection<Badge>()

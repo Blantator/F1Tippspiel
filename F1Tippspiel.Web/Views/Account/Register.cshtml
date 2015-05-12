@@ -1,108 +1,41 @@
-﻿@model F1Tippspiel.Web.Auth.UserProfile
+﻿@model F1Tippspiel.Web.Models.Account.RegisterUser
 
 @{
-    Layout = null;
+    ViewBag.Title = "F1 Tippspiel Registrierung";
+    Layout = "~/Views/Shared/_BootstrapLayout.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/bootstrap")
-    @Scripts.Render("~/bundles/modernizr")
 
-    <style type="text/css">
-        body{background-image: url(../../Content/static/img/splash-bg.jpg)}
-        .user-details {position: relative; padding: 0;}
-        .user-details .user-image {position: relative;  z-index: 1; width: 100%; text-align: center;}
-         .user-image img { clear: both; margin: auto; position: relative;}
-
-        .user-details .user-info-block {width: 100%; position: absolute; top: 55px; background: rgb(255, 255, 255); z-index: 0; padding-top: 35px;}
-         .user-info-block .user-heading {width: 100%; text-align: center; margin: 10px 0 0;}
-         .user-info-block .navigation {float: left; width: 100%; margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #428BCA; border-top: 1px solid #428BCA;}
-          .navigation li {float: left; margin: 0; padding: 0;}
-           .navigation li a {padding: 20px 30px; float: left;}
-           .navigation li.active a {background: #428BCA; color: #fff;}
-         .user-info-block .user-body {float: left; padding: 5%; width: 100%;}
-          .user-body .tab-content > div {float: left; width: 100%;}
-          .user-body .tab-content h4 {width: 100%; margin: 10px 0; color: #333;}
-    </style>
-
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">&nbsp;</div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4 user-details">
-                <div class="user-image">
-                    <img src="@Html.Raw(Model.Picture)" alt="@Html.Raw(Model.Name)" width="100" title="@Html.Raw(Model.Name)" class="img-circle">
-                </div>
-                <div class="user-info-block">
-                    <div class="user-heading">
-                        <h3>@Html.Raw(Model.Name)</h3>
-                        <span class="help-block">@Html.Raw(Model.DisplayName)</span>
-                    </div>
-
-                    <div class="user-body">
-                        <strong>Provider: </strong>@Model.Provider.ToString() - <strong>E-Mail:</strong> @Model.Email <p/>
-
-                        @using(Html.BeginForm("register", "account")){
-                        <text>
-                            @if (string.IsNullOrEmpty(Model.Email) || string.IsNullOrEmpty(Model.DisplayName) || string.IsNullOrEmpty(Model.Name))
-                            {
-                                <div class="alert alert-warning" role="alert">Bitte verfollstädigen Sie folgende Informationen:</div>
-                            }
-                            @if (string.IsNullOrEmpty(Model.Email))
-                            {
-                                @Html.LabelFor(m => m.Email)  @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "meine@email.de" }) 
-                                <p>@Html.ValidationMessageFor(m => m.Email)</p>
-                            }
-                            else
-                            {
-                                @Html.HiddenFor(m => m.Email)
-                            }
-                            @if (string.IsNullOrEmpty(Model.DisplayName))
-                            {
-                                @Html.LabelFor(m => m.DisplayName)  @Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control", placeholder = "Axel Schweis" })
-                                <p>@Html.ValidationMessageFor(m => m.DisplayName)</p>
-                            }
-                            else
-                            {
-                                @Html.HiddenFor(m => m.DisplayName)
-                            }
-                            @if (string.IsNullOrEmpty(Model.Name))
-                            {
-                                @Html.LabelFor(m => m.Name)  @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Axel Schweis" })
-                                <p>@Html.ValidationMessageFor(m => m.Name)</p>
-                            }
-                            else
-                            {
-                                @Html.HiddenFor(m => m.Name)
-                            }
-                            @Html.HiddenFor(m => m.Provider)
-                            @Html.HiddenFor(m => m.UniqueId)
-                            @Html.HiddenFor(m => m.Picture)
-
-                            <strong>Sind diese informationen korrekt?</strong><p>&nbsp;</p>
-                            <div style="margin-left:auto; margin-right:auto; width:100px;">
-                                <a class="btn btn-danger" href="#" role="button">Nein</a>
-                                <input class="btn btn-success" type="submit" value="Ja">
-                            </div>
-                        </text>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
+@section scripts{
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/bootstrap")
-</body>
-</html>
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <h1>Regisrierung</h1>
+        <p>Bitte füllen sie alle folgenden Felder aus</p>
+        @using (Html.BeginForm("register", "account")) { 
+        @Html.AntiForgeryToken()
+        <h3>@Html.LabelFor(m => m.Displayname)</h3>
+        <h6>Unter diesem Namen sind Sie für die anderen Spieler sichtbar</h6>
+        @Html.ValidationMessageFor(m => m.Displayname)
+        @Html.TextBoxFor(m => m.Displayname, new { @class = "form-control", placeholder = "Axel Schweis" })
+
+        <h3>@Html.LabelFor(m => m.Email)</h3>
+        <h6>Kontaktmöglichkeit für Benachrichtigungen</h6>
+        @Html.ValidationMessageFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "donald@duck.dich", type = "email" })
+
+        <h3>@Html.LabelFor(m => m.Password)</h3>
+        <h6>Passwort für das Login</h6>
+        @Html.ValidationMessageFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Passwort" })
+
+        <h3>@Html.LabelFor(m => m.Password2)</h3>
+        <h6>Wiederholen Sie Ihr Passwort</h6>
+        @Html.ValidationMessageFor(m => m.Password2)
+        @Html.PasswordFor(m => m.Password2, new { @class = "form-control", placeholder = "Passwort wiederholen" })<br/>
+        <input type="submit" value="Registrieren" class="btn btn-primary" /> 
+        @Html.ActionLink("Zurück", "index", "home", null, new { @class="btn btn-default"})
+        }
+    </div>
+</div>
