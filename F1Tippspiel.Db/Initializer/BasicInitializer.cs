@@ -13,7 +13,7 @@ using F1Tippspiel.Db.Rewards;
 
 namespace F1Tippspiel.Db.Initializer
 {
-    public class BasicInitializer : DropCreateDatabaseAlways<AppDb>
+    public class BasicInitializer : CreateDatabaseIfNotExists<AppDb>
     {
         protected override void Seed(AppDb context)
         {
@@ -93,9 +93,9 @@ namespace F1Tippspiel.Db.Initializer
                 Drivers = new Collection<Driver>()
             };
 
-            Season season2014 = new Season()
+            Season season2015 = new Season()
             {
-                 Year = 2014,
+                 Year = 2015,
                  Clubs = new Collection<Club>(),
                  Players = new Collection<UserAccount>(),
                  Tracks = new Collection<Track>()
@@ -108,11 +108,11 @@ namespace F1Tippspiel.Db.Initializer
             admin.Achievements.Add(manyLogins);
             admin.Badges.Add(seasonWinner);
 
-            season2014.Players.Add(admin);
-            season2014.Clubs.Add(mclaren);
-            season2014.Tracks.Add(melbourne);
+            season2015.Players.Add(admin);
+            season2015.Clubs.Add(mclaren);
+            season2015.Tracks.Add(melbourne);
 
-            context.Seasons.Add(season2014);
+            context.Seasons.Add(season2015);
             context.SaveChanges();
 
         }

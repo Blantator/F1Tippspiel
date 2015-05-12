@@ -3,23 +3,23 @@ angular.module('tippspiel.config')
 	    $routeProvider
 	        .when('/',
 	        {
-	            controller: 'homeController',
-	            templateUrl: '/home/start'
+	            controller: 'gameController',
+	            templateUrl: '/game/start'
 	        })
 	        .when('/game',
 	        {
 	            controller: 'gameController',
-	            templateUrl: '/home/game'
+	            templateUrl: '/game/game'
 	        })
 	        .when('/delete/:customerId',
 	        {
 	            controller: 'HomeController',
-	            templateUrl: '/home/delete'
+	            templateUrl: '/game/delete'
 	        })
 	        .when('/edit/:customerId',
 	        {
 	            controller: 'HomeController',
-	            templateUrl: '/home/edit'
+	            templateUrl: '/game/edit'
 	        })
 	        .otherwise({ redirectTo: '/' });
 }]);

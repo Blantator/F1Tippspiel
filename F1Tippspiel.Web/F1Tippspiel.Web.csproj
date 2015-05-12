@@ -171,9 +171,14 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\site.css" />
+    <Content Include="Content\static\img\bg-pitstop.jpg" />
+    <Content Include="Content\static\img\error-1-bg.jpg" />
+    <Content Include="Content\static\img\error-2-bg.jpg" />
     <Content Include="Content\static\img\f1_logo.jpg" />
+    <Content Include="Content\static\img\fotos-bg.jpg" />
     <Content Include="Content\static\img\splash-bg.jpg" />
     <Content Include="Content\static\img\unknown_user.png" />
+    <Content Include="Content\static\img\welcome-bg.jpg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -208,7 +213,7 @@
     <Content Include="Scripts\angular\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\config\routing.js" />
-    <Content Include="Scripts\app\controllers\homeController.js" />
+    <Content Include="Scripts\app\controllers\gameController.js" />
     <Content Include="Scripts\app\directives\ui-bootstrap-tpls-0.12.0.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -255,6 +260,7 @@
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\NavigationExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -267,13 +273,13 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_BootstrapLayout.cshtml" />
     <Content Include="Views\Shared\_StartpageLayout.cshtml" />
-    <Content Include="Views\Home\_index.cshtml" />
+    <Content Include="Views\Game\_index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Week.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
@@ -289,6 +295,7 @@
     <Content Include="Views\Shared\EditorTemplates\Color.cshtml" />
     <Content Include="Views\Account\Welcome.cshtml" />
     <Content Include="Views\Home\Rules.cshtml" />
+    <Content Include="Views\Shared\_GameBootstrapLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

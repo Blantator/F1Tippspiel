@@ -4,28 +4,43 @@
     Layout = "~/Views/Shared/_BootstrapLayout.cshtml";
 }
 
-<div class="row message-display">
-    <div class="col-md-4">
-        <img src="~/Content/static/img/f1_logo.jpg" width="100%"/>
-    </div>
-    <div class="col-md-4">
-        <h2>Neu hier?</h2>
-        <p>Willst du bei dem Tippspiel mitmachen? Die Registierung dauert nur einen kleinen Moment!</p>
-        <p><a class="btn btn-default" href="@Url.Action("register", "account")" role="button"><i class="fa fa-user"></i> Neu Registrieren</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Login</h2>
-        @using (Html.BeginForm("login", "account")) { 
-            <h4>@Html.LabelFor(m => m.Username)</h4>
-            @Html.ValidationMessageFor(m => m.Username)
-            @Html.TextBoxFor(m => m.Username, new { @class="form-control"})
-            <h4>@Html.LabelFor(m => m.Password)</h4>
-            @Html.ValidationMessageFor(m => m.Password)
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.CheckBoxFor(m => m.Remember) @Html.LabelFor(m => m.Remember)<br />
-            <button type="submit" class="btn btn-info"><i class="fa fa-sign-in"></i> Login</button> 
-            <a href="@Url.Action("restore", "account")" class="btn btn-default"><i class="fa fa-key"></i> Passwort vergessen?</a>
-        }
+@section bodyClass
+ {
+     bg-redbull
+ }
+
+<div class="row">
+    <div class="col-md-4 hover-content">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>F1 Tippspiel @DateTime.Now.Date.Year</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Neu hier?</h2>
+                <p>Willst du bei dem Tippspiel mitmachen? Die Registierung dauert nur einen kleinen Moment!</p>
+                <p>
+                    <a class="btn btn-default" href="@Url.Action("register", "account")" role="button"><i class="fa fa-user"></i> Neu Registrieren</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Login</h2>
+                @using (Html.BeginForm("login", "account"))
+                {
+                    <h4>@Html.LabelFor(m => m.Username)</h4>
+                    @Html.ValidationMessageFor(m => m.Username)
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                    <h4>@Html.LabelFor(m => m.Password)</h4>
+                    @Html.ValidationMessageFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.CheckBoxFor(m => m.Remember) @Html.LabelFor(m => m.Remember)<br />
+                    <button type="submit" class="btn btn-info"><i class="fa fa-sign-in"></i> Login</button>
+                    <a href="@Url.Action("restore", "account")" class="btn btn-default"><i class="fa fa-key"></i> Passwort vergessen?</a>
+                }
+            </div>
+        </div>
     </div>
 </div>
-

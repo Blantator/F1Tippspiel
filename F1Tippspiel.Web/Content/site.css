@@ -5,3 +5,28 @@
     border-color: #D88989 !important;
     background-color: #FFE4E8 !important;
 }
+
+.bg-redbull {
+    background-image: url('../Content/static/img/splash-bg.jpg');
+}
+
+.bg-fotos {
+    background-image: url('../Content/static/img/fotos-bg.jpg');
+}
+
+.bg-welcome {
+    background-image: url('../Content/static/img/welcome-bg.jpg');
+}
+
+footer {
+    color: white;
+}
+
+.hover-content {
+    -ms-opacity: 0.9;
+    opacity: 0.9; 
+    background-color: white; 
+    padding: 20px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+}
