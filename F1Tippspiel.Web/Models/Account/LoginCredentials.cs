@@ -11,6 +11,7 @@ namespace F1Tippspiel.Web.Models.Account
     {
         [DisplayName("Benutzername")]
         [Required(ErrorMessage="Bitte einen Benutzernamen angeben")]
+        [EmailAddress]
         public string Username { get; set; }
 
         [DisplayName("Passwort")]

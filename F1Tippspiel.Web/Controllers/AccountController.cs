@@ -2,6 +2,7 @@
 using F1Tippspiel.Db.Data;
 using F1Tippspiel.Db.Game;
 using F1Tippspiel.Db.Rewards;
+using F1Tippspiel.Db.Tools;
 using F1Tippspiel.Web.Models.Account;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,7 @@ namespace F1Tippspiel.Web.Controllers
                         LastSeen = DateTime.Now,
                         Registered = DateTime.Now,
                         Enabled = true,
-                        Password = GenerateMD5(newUser.Password),
+                        Password = Hasher.GenerateMD5(newUser.Password),
                         Achievements = new LinkedList<Achievement>(),
                         RaceBets = new LinkedList<RaceBet>(),
                         Badges = new LinkedList<Badge>()
@@ -79,11 +80,21 @@ namespace F1Tippspiel.Web.Controllers
                 UserAccount user = db.Users.FirstOrDefault(u => u.Email.Equals(login.Username));
                 if (user != null)
                 {
-                    if (user.Password.Equals(GenerateMD5(login.Password)))
+                    if (user.Password.Equals(Hasher.GenerateMD5(login.Password)))
                     {
                         //user credentials are correct
-                        FormsAuthentication.SetAuthCookie(user.Email, login.Remember);
-                        return RedirectToAction("index", "game");
+                        if(db.Seasons.FirstOrDefault(s => s.Year.Equals(DateTime.Now.Year)).Players.Contains(user)){
+                            //the user is registered for the current season => proceed
+                            FormsAuthentication.SetAuthCookie(user.Email, login.Remember);
+                            return RedirectToAction("index", "game");
+                        }
+                        else
+                        {
+                            //the user is registered but has not signed up for the current seaon yet
+                            //TODO: offer user to signup for new season (add account to new season)
+                            ViewData.ModelState.AddModelError("Username", "Sie haben sich nicht für die aktuelle Saiton regiestriert!");
+                            return View("~/Views/Home/Index.cshtml", login);
+                        }
                     }
                 }
             }
@@ -91,6 +102,41 @@ namespace F1Tippspiel.Web.Controllers
             ViewData.ModelState.AddModelError("Username", "Der Benutzername oder das Passwort stimmt nicht!");
             ViewData.ModelState.AddModelError("Password", "Der Benutzername oder das Passwort stimmt nicht!");
             return View("~/Views/Home/Index.cshtml", login);
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("index", "home");
+        }
+
+        public ActionResult ForgotPassword()
+        {
+            return View(new PasswordRecovery());
+        }
+
+        [HttpPost, ActionName("forgotpassword")]
+        public ActionResult ForgotPassword(PasswordRecovery recovery)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(recovery);
+            }
+
+            using (AppDb db = new AppDb())
+            {
+                UserAccount user = db.Users.FirstOrDefault(u => u.Email.Equals(recovery.EMail));
+                if (user != null)
+                {
+                    //TODO: generate password and send mail
+                    recovery.Successful = true;
+                    return View(recovery);
+                }
+            }
+
+            //no user found for the provides email address
+            return View(recovery);
         }
 
         /// <summary>
@@ -106,21 +152,6 @@ namespace F1Tippspiel.Web.Controllers
                 isFree = (db.Users.FirstOrDefault(u => u.Email.Equals(email)) == null?"true":"false");
             }
             return isFree;
-        }
-
-        /// <summary>
-        /// Generates a simple MD5-Hash
-        /// </summary>
-        /// <param name="wert"></param>
-        /// <returns></returns>
-        public static String GenerateMD5(String wert)
-        {
-            byte[] bWert = Encoding.UTF8.GetBytes(wert);
-            MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            byte[] hash = md5.ComputeHash(bWert);
-            string md5Wert = BitConverter.ToString(hash).Replace("-", "").ToLower();
-
-            return md5Wert;
         }
     }
 }

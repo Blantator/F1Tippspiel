@@ -10,6 +10,7 @@ using F1Tippspiel.Db.Account;
 using F1Tippspiel.Db.Data;
 using F1Tippspiel.Db.Game;
 using F1Tippspiel.Db.Rewards;
+using F1Tippspiel.Db.Tools;
 
 namespace F1Tippspiel.Db.Initializer
 {
@@ -53,7 +54,7 @@ namespace F1Tippspiel.Db.Initializer
                 LastSeen = DateTime.Now,
                 Registered = DateTime.Now,
                 Enabled = true,
-                Password = "tobehashed",
+                Password = Hasher.GenerateMD5("12011021"),
                 Achievements = new LinkedList<Achievement>(),
                 RaceBets = new LinkedList<RaceBet>(),
                 Badges = new LinkedList<Badge>()
