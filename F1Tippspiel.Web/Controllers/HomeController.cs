@@ -17,14 +17,14 @@ namespace F1Tippspiel.Web.Controllers
 {
     public class HomeController : Controller
     {
-        AppDb _db;
+        AppContext _db;
 
         public HomeController()
         {
-            _db = new AppDb();
+            _db = new AppContext();
         }
 
-        public HomeController(AppDb db)
+        public HomeController(AppContext db)
         {
             _db = db;
         }

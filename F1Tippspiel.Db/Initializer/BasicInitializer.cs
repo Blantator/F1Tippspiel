@@ -11,12 +11,13 @@ using F1Tippspiel.Db.Data;
 using F1Tippspiel.Db.Game;
 using F1Tippspiel.Db.Rewards;
 using F1Tippspiel.Db.Tools;
+using F1Tippspiel.Db.Repositories;
 
 namespace F1Tippspiel.Db.Initializer
 {
-    public class BasicInitializer : CreateDatabaseIfNotExists<AppDb>
+    public class BasicInitializer : CreateDatabaseIfNotExists<AppContext>
     {
-        protected override void Seed(AppDb context)
+        protected override void Seed(AppContext context)
         {
             //To have some date to work with seed a new season with basic configuration:
             // Season
@@ -48,17 +49,26 @@ namespace F1Tippspiel.Db.Initializer
 
             UserAccount admin = new UserAccount()
             {
+                UserName = "bigbasti@gmail.com",
                 Admin = true,
                 DisplayName = "bigbasti",
                 Email = "bigbasti@gmail.com",
                 LastSeen = DateTime.Now,
                 Registered = DateTime.Now,
+                EmailConfirmed = true,
+                TwoFactorEnabled = false,
                 Enabled = true,
-                Password = Hasher.GenerateMD5("12011021"),
+                //Password = Hasher.GenerateMD5("12011021"),
                 Achievements = new LinkedList<Achievement>(),
                 RaceBets = new LinkedList<RaceBet>(),
                 Badges = new LinkedList<Badge>()
             };
+            //using (var authRep = new AuthRepository())
+            //{
+            //    var res = authRep.RegisterUser(admin, "12011021");
+            //    Console.WriteLine("User created successfully: " + res.Succeeded);
+            //}
+            
 
             Race melRace = new Race()
             {
@@ -101,21 +111,20 @@ namespace F1Tippspiel.Db.Initializer
                  Players = new Collection<UserAccount>(),
                  Tracks = new Collection<Track>()
             };
-
+            
             mclaren.Drivers.Add(alonso);
             mclaren.Drivers.Add(vettel);
 
             admin.Achievements.Add(firstBet);
             admin.Achievements.Add(manyLogins);
             admin.Badges.Add(seasonWinner);
-
-            season2015.Players.Add(admin);
+            
+            //season2015.Players.Add(admin);
             season2015.Clubs.Add(mclaren);
             season2015.Tracks.Add(melbourne);
-
+            
             context.Seasons.Add(season2015);
             context.SaveChanges();
-
         }
     }
 }

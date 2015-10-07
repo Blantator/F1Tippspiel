@@ -22,7 +22,7 @@ namespace F1Tippspiel.Test.Web
         [TestMethod]
         public void Inmemory_db_is_created_successful()
         {
-            AppDb db = CreateTransientDb(new WebDbInitializer());
+            AppContext db = CreateTransientDb(new WebDbInitializer());
 
             Season s = db.Seasons.ToList()[0];
 

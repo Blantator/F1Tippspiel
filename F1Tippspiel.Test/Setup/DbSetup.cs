@@ -15,10 +15,10 @@ namespace F1Tippspiel.Test.Setup
         /// </summary>
         /// <param name="initializer">initializer to be used for filling initial test data</param>
         /// <returns>In-memory db instance</returns>
-        public AppDb CreateTransientDb(IInitializer initializer)
+        public AppContext CreateTransientDb(IInitializer initializer)
         {
             DbConnection con = Effort.DbConnectionFactory.CreateTransient();
-            AppDb db = new AppDb(con);
+            AppContext db = new AppContext(con);
             initializer.SeedData(db);
             return db;
         }

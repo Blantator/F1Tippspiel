@@ -11,7 +11,7 @@ angular.module('tippspiel.config')
 	            controller: 'gameController',
 	            templateUrl: '/game/game'
 	        })
-	        .when('/delete/:customerId',
+	        .when('/login',
 	        {
 	            controller: 'HomeController',
 	            templateUrl: '/game/delete'

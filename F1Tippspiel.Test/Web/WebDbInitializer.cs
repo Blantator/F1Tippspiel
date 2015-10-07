@@ -42,7 +42,7 @@ namespace F1Tippspiel.Test.Web
             {
                 Admin = true,
                 DisplayName = "admin",
-                Email = "email@admin.com",
+                //Email = "email@admin.com",
                 LastSeen = DateTime.Now,
                 Enabled = true,
                 Registered = DateTime.Now,
@@ -103,7 +103,7 @@ namespace F1Tippspiel.Test.Web
             season2014.Clubs.Add(mclaren);
             season2014.Tracks.Add(melbourne);
 
-            ((AppDb) context).Seasons.Add(season2014);
+            ((AppContext) context).Seasons.Add(season2014);
             context.SaveChanges();
 
         }

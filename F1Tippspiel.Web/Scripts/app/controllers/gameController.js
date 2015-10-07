@@ -6,13 +6,13 @@
 	            //user is logged in -> redirect to game overview
 	            $location.path('/game');
 	        } else {
-
+                $location.path('/login');
 	        }
 	        $scope.message = "hello from controller";
 	    }
 
 	    function init() {
-	        //redirectIfLoggedIn();
+	        redirectIfLoggedIn();
 	    }
 
 	    init();
