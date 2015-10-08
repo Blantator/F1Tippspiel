@@ -12,7 +12,7 @@ namespace F1Tippspiel.Web.App_Start
     {
         public static void RegisterDatabase()
         {
-            Database.SetInitializer<AppContext>(new BasicInitializer());
+            //No DB config required in Web project
         }
     }
 }

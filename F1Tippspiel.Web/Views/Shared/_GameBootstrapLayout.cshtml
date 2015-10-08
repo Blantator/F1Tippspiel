@@ -1,22 +1,21 @@
-﻿@using F1Tippspiel.Web.Extensions
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html ng-app="tippspiel">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
+    <title>{{siteTitle}}</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/font-awesome")
-
 </head>
 <body class="@RenderSection("bodyClass", required:false)">
 
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/loadingbar")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/app")

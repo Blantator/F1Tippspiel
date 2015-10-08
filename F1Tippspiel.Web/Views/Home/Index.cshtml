@@ -1,48 +1,7 @@
-﻿@model F1Tippspiel.Web.Models.Account.LoginCredentials
-@{
-    ViewBag.Title = "F1 Tippspiel";
-    Layout = "~/Views/Shared/_BootstrapLayout.cshtml";
+﻿@{
+    Layout = "~/Views/Shared/_GameBootstrapLayout.cshtml";
 }
-
-@section bodyClass
- {
-     bg-redbull
- }
-
-<div class="row">
-    <div class="col-md-4 hover-content">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>F1 Tippspiel @DateTime.Now.Date.Year</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Neu hier?</h2>
-                <p>Willst du bei dem Tippspiel mitmachen? Die Registierung dauert nur einen kleinen Moment!</p>
-                <p>
-                    <a class="btn btn-default" href="@Url.Action("register", "account")" role="button"><i class="fa fa-user"></i> Neu Registrieren</a>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Login</h2>
-                @using (Html.BeginForm("login", "account", FormMethod.Post, new { @id = "loginform" }))
-                {
-                    @Html.LabelFor(m => m.Username)<br/>
-                    @Html.ValidationMessageFor(m => m.Username)
-                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control spacer-bottom" })
-                    @Html.LabelFor(m => m.Password)<br/>
-                    @Html.ValidationMessageFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                    <div class="checkbox">
-                        @Html.CheckBoxFor(m => m.Remember) @Html.LabelFor(m => m.Remember)
-                    </div>
-                    <button type="submit" class="btn btn-info"><i class="fa fa-sign-in"></i> Login</button>
-                    <a href="@Url.Action("forgotpassword", "account")" class="btn btn-default"><i class="fa fa-key"></i> Passwort vergessen?</a>
-                }
-            </div>
-        </div>
+<div class="container">
+    <div ng-view="">
     </div>
 </div>

@@ -3,8 +3,8 @@ angular.module('tippspiel.config')
 	    $routeProvider
 	        .when('/',
 	        {
-	            controller: 'gameController',
-	            templateUrl: '/game/start'
+	            controller: 'homeController',
+	            templateUrl: '/home/start'
 	        })
 	        .when('/game',
 	        {

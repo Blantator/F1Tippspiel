@@ -9,6 +9,7 @@
 
 	        }
 	        $scope.message = "hello from controller";
+            $scope.siteTitle = "Tippspiel 2016";
 	    }
 
 	    function init() {
