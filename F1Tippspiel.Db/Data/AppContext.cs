@@ -1,4 +1,4 @@
-﻿using F1Tippspiel.Db.Account;
+﻿using F1Tippspiel.Db.Authentication;
 using F1Tippspiel.Db.Communication;
 using F1Tippspiel.Db.Game;
 using F1Tippspiel.Db.Rewards;
@@ -20,6 +20,9 @@ namespace F1Tippspiel.Db.Data
 
         public AppContext(DbConnection connection)
             : base(connection, true) { }
+
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         public DbSet<Comment> Comments { get; set; }
         public DbSet<UserMessage> UserMessages { get; set; }

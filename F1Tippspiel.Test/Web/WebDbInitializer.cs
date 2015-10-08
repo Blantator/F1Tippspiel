@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using F1Tippspiel.Db.Account;
+using F1Tippspiel.Db.Authentication;
 using F1Tippspiel.Db.Data;
 using F1Tippspiel.Db.Game;
 using F1Tippspiel.Db.Rewards;

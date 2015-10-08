@@ -8,7 +8,7 @@ using F1Tippspiel.Db.Rewards;
 using F1Tippspiel.Db.Game;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace F1Tippspiel.Db.Account
+namespace F1Tippspiel.Db.Authentication
 {
     public class UserAccount : IdentityUser
     {

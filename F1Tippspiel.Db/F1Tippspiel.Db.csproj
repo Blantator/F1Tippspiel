@@ -88,7 +88,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\UserAccount.cs" />
+    <Compile Include="Authentication\ApplicationType.cs" />
+    <Compile Include="Authentication\Client.cs" />
+    <Compile Include="Authentication\RefreshToken.cs" />
+    <Compile Include="Authentication\UserAccount.cs" />
     <Compile Include="Communication\Comment.cs" />
     <Compile Include="Communication\UserMessage.cs" />
     <Compile Include="Data\AppContext.cs" />

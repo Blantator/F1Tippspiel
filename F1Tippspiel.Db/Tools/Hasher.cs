@@ -14,7 +14,7 @@ namespace F1Tippspiel.Db.Tools
         /// </summary>
         /// <param name="wert"></param>
         /// <returns></returns>
-        public static String GenerateMD5(String wert)
+        public static string GenerateMD5(String wert)
         {
             byte[] bWert = Encoding.UTF8.GetBytes(wert);
             MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
@@ -22,6 +22,17 @@ namespace F1Tippspiel.Db.Tools
             string md5Wert = BitConverter.ToString(hash).Replace("-", "").ToLower();
 
             return md5Wert;
+        }
+
+        public static string GetHash(string input)
+        {
+            HashAlgorithm hashAlgorithm = new SHA256CryptoServiceProvider();
+
+            byte[] byteValue = Encoding.UTF8.GetBytes(input);
+
+            byte[] byteHash = hashAlgorithm.ComputeHash(byteValue);
+
+            return Convert.ToBase64String(byteHash);
         }
     }
 }

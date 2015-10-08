@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using F1Tippspiel.Db.Account;
+using F1Tippspiel.Db.Authentication;
 
 namespace F1Tippspiel.Db.Communication
 {
