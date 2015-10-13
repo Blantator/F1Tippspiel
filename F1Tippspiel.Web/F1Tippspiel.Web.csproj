@@ -190,10 +190,14 @@
     <Content Include="Scripts\angular\angular.js" />
     <Content Include="Scripts\angular\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\config\interceptors.js" />
     <Content Include="Scripts\app\config\routing.js" />
     <Content Include="Scripts\app\controllers\gameController.js" />
     <Content Include="Scripts\app\controllers\homeController.js" />
-    <Content Include="Scripts\app\directives\ui-bootstrap-tpls-0.12.0.min.js" />
+    <Content Include="Scripts\app\directives\ui-bootstrap.js" />
+    <Content Include="Scripts\app\directives\ui-bootstrap.min.js" />
+    <Content Include="Scripts\app\services\authInterceptorService.js" />
+    <Content Include="Scripts\app\services\authService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_de.js" />
@@ -240,6 +244,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\NavigationExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -250,7 +255,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Game\_start.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_BootstrapLayout.cshtml" />
     <Content Include="Views\Shared\_StartpageLayout.cshtml" />
@@ -281,7 +286,6 @@
     <Folder Include="Auth\" />
     <Folder Include="Models\Account\" />
     <Folder Include="Scripts\app\filters\" />
-    <Folder Include="Scripts\app\services\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Auth\" />
   </ItemGroup>

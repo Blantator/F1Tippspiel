@@ -1,33 +1,31 @@
 ﻿angular.module('tippspiel.controllers')
-	.controller('homeController', ['$scope', '$location', function ($scope, $routeParams, $location) {
+	.controller('homeController', ['$rootScope', '$scope', '$location', '$routeParams', 'authService', function ($rootScope, $scope, $location, $routeParams, authService) {
 
-	    function redirectIfLoggedIn() {
-	        if (typeof $scope.authToken !== 'undefined') {
-	            //user is logged in -> redirect to game overview
-	            $location.path('/game');
-	        } else {
+		$rootScope.siteTitle = "Login";
+		$rootScope.authentication = authService.authentication;
 
-	        }
-	        $scope.message = "hello from controller";
-            $scope.siteTitle = "Tippspiel 2016";
-	    }
+		function init() {
+			if (authService.authentication.isAuthenticated) {
+				$location.path('/game');
+			}
+		}
 
-	    function init() {
-	        redirectIfLoggedIn();
-	    }
+		var _tryLogin = function (loginModel) {
+			var loginData = {
+				userName: loginModel.email,
+				password: loginModel.password
+			};
 
-	    init();
+			authService.login(loginData)
+			.then(function (response) {
+				$scope.authentication = authService.authentication;
+				$location.path('/game');
+			}, function (error) {
+				alert("could not login!");
+			});
+		};
 
-	    //$scope.addCustomer = function () {
-	    //    var customer = {};
-	    //    customer.id = 0;
-	    //    customer.name = $scope.customer.name;
-	    //    customer.city = $scope.customer.city;
-	    //    customerFactory.addCustomer(customer);
-	    //};
-
-	    //$scope.deleteCustomer = function () {
-	    //    customerFactory.deleteCustomer($routeParams.customerId);
-	    //};
+		init();
+		$scope.tryLogin = _tryLogin;
 	}
 ]);

@@ -1,30 +1,25 @@
-﻿<!-- Static navbar -->
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/">F1 Tippspiel</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav"></ul>
-            <ul class="nav navbar-nav navbar-right"></ul>
-        </div><!--/.nav-collapse -->
-    </div><!--/.container-fluid -->
-</nav>
-
-<div class="row message-display">
-    <div class="col-md-4">
-        {{2+2}} {{siteTitle}}
-    </div>
+﻿<div class="row">
+	<div class="col-md-4">
+		<h1>F1 Tippspiel 2016</h1>
+		<p>Willkommen zu dem neuen Tippspiel</p>
+		<p>Schnell registrieren und mitmachen!</p>
+	</div>
+	<div class="col-md-4">
+		<form novalidate class="simple-form">
+			<h1>Login</h1>
+			<label for="mail">E-Mail:</label> <br /><input class="form-control" id="mail" name="mail" type="email" ng-model="loginModel.email" /><br />
+			<label for="pass">Passwort:</label> <br /><input class="form-control" id="pass" name="pass" type="password" ng-model="loginModel.password" /><br />
+			<input class="btn btn-primary" type="submit" ng-click="tryLogin(loginModel)" value="Einloggen" /> <a href="#/forgot">Passwort vergessen?</a>
+		</form>
+	</div>
+	<div class="col-md-4">
+		<form novalidate class="simple-form">
+			<h1>Registrieren</h1>
+			<label for="displayname">Name:</label> <br/><input class="form-control" id="displayname" name="displayname" type="text" ng-model="registerModel.displayname" /><br />
+			<label for="email">E-Mail:</label> <br /><input class="form-control" id="email" name="email" type="email" ng-model="registerModel.email" /><br />
+			<label for="password">Passwort:</label> <br /><input class="form-control" id="password" name="password" type="password" ng-model="registerModel.password" /><br />
+			<label for="password2">Passwort wiederholen:</label> <br /><input class="form-control" id="password2" name="password2" type="password" ng-model="registerModel.password2" /><br />
+			<input class="btn btn-primary" type="submit" ng-click="tryRegister(registerModel)" value="Registrieren" />
+		</form>
+	</div>
 </div>
-
-<hr>
-
-<footer>
-    <p>&copy; bigbasti.com @DateTime.Now.Year</p>
-</footer>

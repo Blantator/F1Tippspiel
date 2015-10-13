@@ -9,12 +9,7 @@ angular.module('tippspiel.config')
 	        .when('/game',
 	        {
 	            controller: 'gameController',
-	            templateUrl: '/game/game'
-	        })
-	        .when('/login',
-	        {
-	            controller: 'HomeController',
-	            templateUrl: '/game/delete'
+	            templateUrl: '/game/start'
 	        })
 	        .when('/edit/:customerId',
 	        {
