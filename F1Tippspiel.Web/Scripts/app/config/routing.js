@@ -11,6 +11,12 @@ angular.module('tippspiel.config')
 	            controller: 'gameController',
 	            templateUrl: '/game/start'
 	        })
+			
+	        .when('/rules',
+	        {
+	            controller: 'rulesController',
+	            templateUrl: '/home/rules'
+	        })
 	        .when('/edit/:customerId',
 	        {
 	            controller: 'HomeController',

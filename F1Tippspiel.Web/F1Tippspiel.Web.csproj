@@ -148,7 +148,12 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\loading-bar.css" />
     <Content Include="Content\loading-bar.min.css" />
-    <Content Include="Content\site.css" />
+    <Content Include="Content\site.css">
+      <DependentUpon>site.less</DependentUpon>
+    </Content>
+    <Content Include="Content\site.min.css">
+      <DependentUpon>site.css</DependentUpon>
+    </Content>
     <Content Include="Content\static\img\bg-pitstop.jpg" />
     <Content Include="Content\static\img\error-1-bg.jpg" />
     <Content Include="Content\static\img\error-2-bg.jpg" />
@@ -194,6 +199,7 @@
     <Content Include="Scripts\app\config\routing.js" />
     <Content Include="Scripts\app\controllers\gameController.js" />
     <Content Include="Scripts\app\controllers\homeController.js" />
+    <Content Include="Scripts\app\controllers\rulesController.js" />
     <Content Include="Scripts\app\directives\ui-bootstrap.js" />
     <Content Include="Scripts\app\directives\ui-bootstrap.min.js" />
     <Content Include="Scripts\app\services\authInterceptorService.js" />
@@ -202,6 +208,10 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_de.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_en.js" />
+    <Content Include="Scripts\extensions.js" />
+    <Content Include="Scripts\extensions.min.js">
+      <DependentUpon>extensions.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -221,6 +231,12 @@
     <Content Include="Scripts\angular\angular.min.js.map" />
     <Content Include="Scripts\angular\angular-local-storage.min.js.map">
       <DependentUpon>angular-local-storage.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\site.less" />
+    <None Include="bundleconfig.json" />
+    <None Include="compilerconfig.json" />
+    <Content Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
     </Content>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -274,6 +290,7 @@
     <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Color.cshtml" />
     <Content Include="Views\Shared\_GameBootstrapLayout.cshtml" />
+    <Content Include="Views\Home\_rules.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

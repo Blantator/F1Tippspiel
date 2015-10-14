@@ -1,25 +1,69 @@
 ﻿<div class="row">
 	<div class="col-md-4">
+		<img src="~/Content/static/img/f1_logo.jpg" width="355" />
+	</div>
+	<div class="col-md-4">
 		<h1>F1 Tippspiel 2016</h1>
 		<p>Willkommen zu dem neuen Tippspiel</p>
-		<p>Schnell registrieren und mitmachen!</p>
+		<p>Das Tippspiel startet 2015 in die neue Saison. Es gibt diverse Verbesserungen und neue Arten von Tipps auf die ihr euch freuen könnt.</p>
+		<p>Also schnell registrieren und mitmachen!</p>
 	</div>
 	<div class="col-md-4">
-		<form novalidate class="simple-form">
-			<h1>Login</h1>
-			<label for="mail">E-Mail:</label> <br /><input class="form-control" id="mail" name="mail" type="email" ng-model="loginModel.email" /><br />
-			<label for="pass">Passwort:</label> <br /><input class="form-control" id="pass" name="pass" type="password" ng-model="loginModel.password" /><br />
-			<input class="btn btn-primary" type="submit" ng-click="tryLogin(loginModel)" value="Einloggen" /> <a href="#/forgot">Passwort vergessen?</a>
-		</form>
-	</div>
-	<div class="col-md-4">
-		<form novalidate class="simple-form">
-			<h1>Registrieren</h1>
-			<label for="displayname">Name:</label> <br/><input class="form-control" id="displayname" name="displayname" type="text" ng-model="registerModel.displayname" /><br />
-			<label for="email">E-Mail:</label> <br /><input class="form-control" id="email" name="email" type="email" ng-model="registerModel.email" /><br />
-			<label for="password">Passwort:</label> <br /><input class="form-control" id="password" name="password" type="password" ng-model="registerModel.password" /><br />
-			<label for="password2">Passwort wiederholen:</label> <br /><input class="form-control" id="password2" name="password2" type="password" ng-model="registerModel.password2" /><br />
-			<input class="btn btn-primary" type="submit" ng-click="tryRegister(registerModel)" value="Registrieren" />
-		</form>
+		<uib-tabset>
+			<uib-tab heading="Login">
+				<div ng-hide="!alert.available" class="alert alert-dismissible {{alert.type}}" role="alert">
+					{{alert.message}}
+				</div>
+				<form novalidate class="simple-form" name="loginForm">
+					<label for="mail">E-Mail:</label> <br />
+					<p ng-show="loginForm.mail.$invalid && !loginForm.mail.$pristine && loginForm.mail.$touched" class="help-block field-validation-error">Bitte geben Sie Ihre E-Mail an</p>
+					<input class="form-control" id="mail" name="mail" type="email"
+						   ng-model="loginModel.email" ng-required="true" /><br />
+					<label for="pass">Passwort:</label> <br />
+					<p ng-show="loginForm.pass.$invalid && !loginForm.pass.$pristine && loginForm.mail.$touched" class="help-block field-validation-error">Bitte geben Sie Ihr Passwort ein</p>
+					<input class="form-control" id="pass" name="pass" type="password"
+						   ng-model="loginModel.password" ng-required="true" /><br />
+					<input class="btn btn-primary" type="submit" value="Einloggen"
+						   ng-click="tryLogin(loginModel)" ng-disabled="loginForm.$invalid" />
+					<a href="#/forgot">Passwort vergessen?</a>
+				</form>
+			</uib-tab>
+			<uib-tab heading="Registrieren">
+				<form novalidate class="simple-form" name="registerForm">
+					<label for="displayname">Name:</label> <br />
+					<p ng-show="registerForm.displayname.$error.minlength && registerForm.displayname.$touched" class="help-block field-validation-error">Der gewählte name ist zu kurz</p>
+					<p ng-show="registerForm.displayname.$invalid && !registerForm.displayname.$pristine && registerForm.displayname.$touched" class="help-block field-validation-error">Bitte geben Sie Ihren Namen an</p>
+					<input class="form-control" id="displayname" name="displayname" type="text" 
+						   ng-minlength="3" ng-required="true" ng-model="registerModel.displayname" /><br />
+					<label for="email">E-Mail:</label> <br />
+					<p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine && registerForm.email.$touched" class="help-block field-validation-error">Bitte geben Sie eine <strong>gültige</strong> E-Mail an</p>
+					<input class="form-control" id="email" name="email" type="email" 
+						   ng-minlength="3" ng-required="true" ng-model="registerModel.email" /><br />
+					<label for="password">Passwort:</label> <br />
+					<p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine && registerForm.password.$touched" class="help-block field-validation-error">Bitte geben Sie Ihr Passwort ein</p>
+					<input class="form-control" id="password" name="password" type="password" 
+						   ng-model="registerModel.password" ng-required="true" /><br />
+					<label for="password2">Passwort wiederholen:</label> <br />
+					<p ng-show="registerForm.password2.$invalid && !registerForm.password2.$pristine && registerForm.password2.$touched" class="help-block field-validation-error">Bitte geben Sie Ihr Passwort erneut ein</p>
+					<input class="form-control" id="password2" name="password2" type="password" 
+						   ng-model="registerModel.password2" ng-required="true" /><br />
+					<input class="btn btn-primary" type="submit" value="Registrieren"
+						   ng-click="tryRegister(registerModel)" ng-disabled="registerForm.$invalid"  />
+				</form>
+			</uib-tab>
+			<uib-tab heading="Passwort vergessen?">
+				<div class="alert alert-dismissible alert-info" role="alert">
+					<p>Bitte geben Sie Ihre E-Mail Adresse ein, mit der Sie sich beim Tippspiel registriert haben. Wir senden Ihnen dann eine E-Mail mit einem neuen Passwort zu.</p>
+					<form novalidate class="simple-form" name="resetPassForm"><br />
+						<label for="resetmail">E-Mail:</label> 
+						<p ng-show="resetPassForm.resetmail.$invalid && !resetPassForm.resetmail.$pristine && resetPassForm.resetmail.$touched" class="help-block field-validation-error">Bitte geben Sie Ihre E-Mail an</p>
+						<input class="form-control" id="resetmail" name="resetmail" type="email"
+							   ng-model="resetPassModel.resetmail" ng-required="true" /><br />
+						<input class="btn btn-primary" type="submit" value="Passwort anfordern"
+							   ng-click="tryResetPassword(resetPassModel)" ng-disabled="resetPassForm.$invalid" />
+					</form>
+				</div>
+			</uib-tab>
+		</uib-tabset>
 	</div>
 </div>

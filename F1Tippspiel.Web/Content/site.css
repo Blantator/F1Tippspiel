@@ -1,42 +1,44 @@
-﻿body { padding-top: 70px; }
-
+﻿.highlighted {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+.tab-content {
+  padding: 5px;
+}
+body {
+  padding-top: 70px;
+}
 #loginform label {
-    margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
 }
-
-.spacer-bottom{
-    margin-bottom: 5px;
+.spacer-bottom {
+  margin-bottom: 5px;
 }
-
-.field-validation-error{
-    color: darkred;
+.field-validation-error {
+  color: darkred !important;
+  margin-bottom: 0 !important;
 }
-.input-validation-error{
-    border-color: #D88989 !important;
-    background-color: #FFE4E8 !important;
+.input-validation-error {
+  border-color: #D88989 !important;
+  background-color: #FFE4E8 !important;
 }
-
 .bg-redbull {
-    background-image: url('../Content/static/img/splash-bg.jpg');
+  background-image: url('static/img/splash-bg.jpg');
 }
-
 .bg-fotos {
-    background-image: url('../Content/static/img/fotos-bg.jpg');
+  background-image: url('static/img/fotos-bg.jpg');
 }
-
 .bg-welcome {
-    background-image: url('../Content/static/img/welcome-bg.jpg');
+  background-image: url('static/img/welcome-bg.jpg');
 }
-
 footer {
-    color: white;
+  color: black;
+  border-top: 1px solid #c7c7c7;
+  padding-top: 5px;
 }
-
 .hover-content {
-    -ms-opacity: 0.9;
-    opacity: 0.9; 
-    background-color: white; 
-    padding: 20px;
-    -ms-border-radius: 10px;
-    border-radius: 10px;
+  opacity: 0.9;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
 }

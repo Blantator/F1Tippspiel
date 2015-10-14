@@ -12,20 +12,29 @@
 
 		function init() {
 			redirectIfNotLoggedIn();
+			$rootScope.currentRoute = _getArea($location.path());
 		}
 
+		var _logout = function () {
+			authService.logout();
+			$location.path('/');
+		};
+
+
+		/**
+		 * determine the area of the application the user is currently in
+		 * to hilight the menu link on the interface accordingly
+		 */
+		function _getArea(path) {
+			if (path.startsWith('/game')) {
+				return 'game';
+			} else if (path.startsWith('/')) {
+				return 'root';
+			}
+			return '/';
+		};
+
 		init();
-
-		//$scope.addCustomer = function () {
-		//    var customer = {};
-		//    customer.id = 0;
-		//    customer.name = $scope.customer.name;
-		//    customer.city = $scope.customer.city;
-		//    customerFactory.addCustomer(customer);
-		//};
-
-		//$scope.deleteCustomer = function () {
-		//    customerFactory.deleteCustomer($routeParams.customerId);
-		//};
+		$rootScope.logout = _logout;
 	}
 ]);

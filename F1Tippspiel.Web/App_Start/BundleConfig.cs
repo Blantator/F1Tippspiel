@@ -27,6 +27,9 @@ namespace F1Tippspiel.Web
 
 			bundles.Add(new StyleBundle("~/Content/font-awesome").Include("~/Content/font-awesome.css"));
 
+			bundles.Add(new ScriptBundle("~/bundles/scriptaddons").Include(
+						"~/Scripts/extensions*"));
+
 			bundles.Add(new ScriptBundle("~/bundles/angular").Include(
 						"~/Scripts/angular/angular.*",
 						"~/Scripts/angular/angular-route*",
