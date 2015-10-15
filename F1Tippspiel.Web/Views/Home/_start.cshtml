@@ -25,37 +25,43 @@
 						   ng-model="loginModel.password" ng-required="true" /><br />
 					<input class="btn btn-primary" type="submit" value="Einloggen"
 						   ng-click="tryLogin(loginModel)" ng-disabled="loginForm.$invalid" />
-					<a href="#/forgot">Passwort vergessen?</a>
 				</form>
 			</uib-tab>
 			<uib-tab heading="Registrieren">
+				<div ng-hide="!registerAlert.available" class="alert alert-dismissible {{registerAlert.type}}" role="alert">
+					{{registerAlert.message}}
+				</div>
 				<form novalidate class="simple-form" name="registerForm">
 					<label for="displayname">Name:</label> <br />
 					<p ng-show="registerForm.displayname.$error.minlength && registerForm.displayname.$touched" class="help-block field-validation-error">Der gewählte name ist zu kurz</p>
 					<p ng-show="registerForm.displayname.$invalid && !registerForm.displayname.$pristine && registerForm.displayname.$touched" class="help-block field-validation-error">Bitte geben Sie Ihren Namen an</p>
-					<input class="form-control" id="displayname" name="displayname" type="text" 
+					<input class="form-control" id="displayname" name="displayname" type="text"
 						   ng-minlength="3" ng-required="true" ng-model="registerModel.displayname" /><br />
 					<label for="email">E-Mail:</label> <br />
 					<p ng-show="registerForm.email.$invalid && !registerForm.email.$pristine && registerForm.email.$touched" class="help-block field-validation-error">Bitte geben Sie eine <strong>gültige</strong> E-Mail an</p>
-					<input class="form-control" id="email" name="email" type="email" 
+					<input class="form-control" id="email" name="email" type="email"
 						   ng-minlength="3" ng-required="true" ng-model="registerModel.email" /><br />
 					<label for="password">Passwort:</label> <br />
 					<p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine && registerForm.password.$touched" class="help-block field-validation-error">Bitte geben Sie Ihr Passwort ein</p>
-					<input class="form-control" id="password" name="password" type="password" 
+					<input class="form-control" id="password" name="password" type="password"
 						   ng-model="registerModel.password" ng-required="true" /><br />
 					<label for="password2">Passwort wiederholen:</label> <br />
 					<p ng-show="registerForm.password2.$invalid && !registerForm.password2.$pristine && registerForm.password2.$touched" class="help-block field-validation-error">Bitte geben Sie Ihr Passwort erneut ein</p>
-					<input class="form-control" id="password2" name="password2" type="password" 
+					<input class="form-control" id="password2" name="password2" type="password"
 						   ng-model="registerModel.password2" ng-required="true" /><br />
 					<input class="btn btn-primary" type="submit" value="Registrieren"
-						   ng-click="tryRegister(registerModel)" ng-disabled="registerForm.$invalid"  />
+						   ng-click="tryRegister(registerModel)" ng-disabled="registerForm.$invalid" />
 				</form>
 			</uib-tab>
 			<uib-tab heading="Passwort vergessen?">
 				<div class="alert alert-dismissible alert-info" role="alert">
+					<div ng-hide="!resetPasswordAlert.available" class="alert alert-dismissible {{resetPasswordAlert.type}}" role="alert">
+						{{resetPasswordAlert.message}}
+					</div>
 					<p>Bitte geben Sie Ihre E-Mail Adresse ein, mit der Sie sich beim Tippspiel registriert haben. Wir senden Ihnen dann eine E-Mail mit einem neuen Passwort zu.</p>
-					<form novalidate class="simple-form" name="resetPassForm"><br />
-						<label for="resetmail">E-Mail:</label> 
+					<form novalidate class="simple-form" name="resetPassForm">
+						<br />
+						<label for="resetmail">E-Mail:</label>
 						<p ng-show="resetPassForm.resetmail.$invalid && !resetPassForm.resetmail.$pristine && resetPassForm.resetmail.$touched" class="help-block field-validation-error">Bitte geben Sie Ihre E-Mail an</p>
 						<input class="form-control" id="resetmail" name="resetmail" type="email"
 							   ng-model="resetPassModel.resetmail" ng-required="true" /><br />

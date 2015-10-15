@@ -82,7 +82,9 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -91,6 +93,7 @@
     <Compile Include="Setup\DbSetup.cs" />
     <Compile Include="Setup\Initializer.cs" />
     <Compile Include="Tools\HasherTest.cs" />
+    <Compile Include="Tools\GeneratorTest.cs" />
     <Compile Include="Web\HomeControllerTest.cs" />
     <Compile Include="Web\WebDbInitializer.cs" />
   </ItemGroup>
