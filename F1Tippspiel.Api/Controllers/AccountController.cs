@@ -1,4 +1,7 @@
 ﻿using F1Tippspiel.Db;
+using F1Tippspiel.Db.Authentication;
+using F1Tippspiel.Db.Data;
+using F1Tippspiel.Db.Game;
 using F1Tippspiel.Db.Models.Account;
 using F1Tippspiel.Db.Repositories;
 using Microsoft.AspNet.Identity;
@@ -16,11 +19,13 @@ namespace F1Tippspiel.Api.Controllers
 	[RoutePrefix("api/account")]
 	public class AccountController : ApiController
 	{
-		private AuthRepository _repo = null;
+		private AuthRepository _users = null;
+		private SeasonRepository _seasons = null;
 
 		public AccountController()
 		{
-			_repo = new AuthRepository();
+			_users = new AuthRepository();
+			_seasons = new SeasonRepository();
 		}
 
 		[AllowAnonymous]
@@ -32,13 +37,27 @@ namespace F1Tippspiel.Api.Controllers
 				return BadRequest(ModelState);
 			}
 
-			IdentityResult result = await _repo.RegisterUser(userModel);
+			IdentityResult result = await _users.RegisterUser(userModel);
 			IHttpActionResult errorResult = GetErrorResult(result);
 
 			if(errorResult != null)
 			{
 				return errorResult;
 			}
+
+			using (AppContext ctx = new AppContext())
+			{
+				//Add the fresh user to the current/latest season
+				Season latestSeason = ctx.Seasons.OrderByDescending(o => o.SeasonId).First();
+				if (latestSeason != null)
+				{
+					//if there is no season created yet, just create the user without assigning him to a season
+					UserAccount newPlayer = ctx.Users.FirstOrDefault(u => u.Email == userModel.Email);
+					latestSeason.Players.Add(newPlayer);
+					ctx.SaveChanges();
+				}
+			}
+			
 
 			return Ok();
 		}
@@ -52,10 +71,10 @@ namespace F1Tippspiel.Api.Controllers
 				return BadRequest();
 			}
 
-			IdentityUser user = await _repo.FindUser(resetPasswordModel.Email);
+			IdentityUser user = await _users.FindUser(resetPasswordModel.Email);
 			if(user != null)
 			{
-				string newPass = await _repo.ResetPassword(user);
+				string newPass = await _users.ResetPassword(user);
 				if (newPass != string.Empty)
 				{
 					//TODO: Send new password to the user
@@ -72,7 +91,8 @@ namespace F1Tippspiel.Api.Controllers
 		{
 			if (disposing)
 			{
-				_repo.Dispose();
+				_users.Dispose();
+				_seasons.Dispose();
 			}
 			base.Dispose(disposing);
 		}

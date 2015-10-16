@@ -79,6 +79,11 @@ namespace F1Tippspiel.Db.Repositories
 			return user;
 		}
 
+		public UserAccount FindUserAccount(string emailAddress)
+		{
+			return _ctx.Users.FirstOrDefault(u => u.Email == emailAddress);
+		}
+
 		public async Task<string> ResetPassword(IdentityUser user)
 		{
 			string newPass = Generator.GenerateNumberString(9);
