@@ -1,4 +1,7 @@
-﻿.highlighted {
+﻿.bold-text {
+  font-weight: bold;
+}
+.highlighted {
   background-color: #f8f8f8;
   border-radius: 10px;
 }

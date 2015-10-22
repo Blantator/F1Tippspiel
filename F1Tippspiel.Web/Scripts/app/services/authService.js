@@ -7,7 +7,8 @@ angular.module('tippspiel.services')
 
 		var _authentication = {
 			isAuthenticated: false,
-			userName: ""
+			userName: "",
+			displayName: ""
 		};
 
 		var _registerNewAccount = function (newAccount) {
@@ -33,11 +34,13 @@ angular.module('tippspiel.services')
 					token: response.access_token,
 					refresh_token: response.refresh_token,
 					expires_in: response.expires_in,
-					userName: loginData.userName
+					userName: loginData.userName,
+					displayName: response.displayName
 				});
 
 				_authentication.isAuthenticated = true;
-				_authentication.userName = loginData.userName;
+				_authentication.userName = response.userName;
+				_authentication.displayName = response.displayName;
 
 				deferred.resolve(response);
 			}).error(function (err, status) {
@@ -52,6 +55,7 @@ angular.module('tippspiel.services')
 			localStorageService.remove("authorizationData");
 			_authentication.isAuthenticated = false;
 			_authentication.userName = "";
+			_authentication.diaplayName = "";
 		};
 
 		var _resetPassword = function (emailAddress) {
@@ -68,6 +72,11 @@ angular.module('tippspiel.services')
 			if (authData) {
 				_authentication.isAuthenticated = true;
 				_authentication.userName = authData.userName;
+				_authentication.displayName = authData.displayName;
+			} else {
+				_authentication.isAuthenticated = false;
+				_authentication.userName = "";
+				_authentication.displayName = "";
 			}
 		};
 

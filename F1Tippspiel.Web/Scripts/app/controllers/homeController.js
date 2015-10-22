@@ -21,6 +21,7 @@
 		$rootScope.authentication = authService.authentication;
 
 		function init() {
+			authService.fillAuthData();
 			if (authService.authentication.isAuthenticated) {
 				$location.path('/game');
 			}

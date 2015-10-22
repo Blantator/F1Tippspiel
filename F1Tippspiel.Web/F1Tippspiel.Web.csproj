@@ -204,6 +204,7 @@
     <Content Include="Scripts\app\directives\ui-bootstrap.min.js" />
     <Content Include="Scripts\app\services\authInterceptorService.js" />
     <Content Include="Scripts\app\services\authService.js" />
+    <Content Include="Scripts\app\services\seasonService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_de.js" />

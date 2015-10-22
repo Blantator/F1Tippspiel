@@ -1,19 +1,37 @@
 ﻿angular.module('tippspiel.controllers')
-	.controller('gameController', ['$rootScope', '$scope', '$location', '$routeParams', 'authService', function ($rootScope, $scope, $location, $routeParams, authService) {
+	.controller('gameController', ['$rootScope', '$scope', '$location', '$routeParams', 'authService', 'seasonService', 
+						  function ($rootScope,   $scope,   $location,   $routeParams,   authService,   seasonService) {
 
 		$rootScope.siteTitle = "Tippspiel 2016";
 		$rootScope.authentication = authService.authentication;
 
-		function redirectIfNotLoggedIn() {
+		$scope.playerStandings = [];
+		$scope.isLoadingPlayerStandings = false;
+
+		function _redirectIfNotLoggedIn() {
 			if (!authService.authentication.isAuthenticated) {
 				$location.path('/');
 			}
 		}
 
 		function init() {
-			redirectIfNotLoggedIn();
+			_redirectIfNotLoggedIn();
 			$rootScope.currentRoute = _getArea($location.path());
+			_loadPlayerStandings();
 		}
+
+		function _loadPlayerStandings() {
+			$scope.isLoadingPlayerStandings = true;
+
+			seasonService.getCurrentPlayerStandings()
+			.then(function (response) {
+				$scope.isLoadingPlayerStandings = false;
+				$scope.playerStandings = response.data;
+			}, function (err, status) {
+				$scope.isLoadingPlayerStandings = false;
+				console.log("fehler: " + err.data.message);
+			});
+		};
 
 		var _logout = function () {
 			authService.logout();
@@ -36,5 +54,6 @@
 
 		init();
 		$rootScope.logout = _logout;
+		$scope.refreshPlayerStandings = _loadPlayerStandings;
 	}
 ]);

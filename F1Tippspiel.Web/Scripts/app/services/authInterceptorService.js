@@ -18,6 +18,7 @@ angular.module('tippspiel.services')
 		//intercept error responses and redirect user to login view
 		var _responseError = function (rejection) {
 			if (rejection.status === 401) {
+				localStorageService.remove("authorizationData");
 				$location.path("#/");
 			}
 			return $q.reject(rejection);
