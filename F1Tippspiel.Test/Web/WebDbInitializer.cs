@@ -13,99 +13,98 @@ using F1Tippspiel.Test.Setup;
 
 namespace F1Tippspiel.Test.Web
 {
-    public class WebDbInitializer : IInitializer
-    {
-        public void SeedData(DbContext context)
-        {
-            Achievement manyLogins = new Achievement()
-            {
-                Description = "You logged in at least 10 times",
-                Name = "Addicted",
-                Icon = "some/icon.png"
-            };
+	public class WebDbInitializer : IInitializer
+	{
+		public void SeedData(DbContext context)
+		{
+			Achievement manyLogins = new Achievement()
+			{
+				Description = "You logged in at least 10 times",
+				Name = "Addicted",
+				Icon = "some/icon.png"
+			};
 
-            Achievement firstBet = new Achievement()
-            {
-                Description = "You were the first to place a bet for the next race",
-                Name = "Speedy Gonzales",
-                Icon = "some/speedy.png"
-            };
+			Achievement firstBet = new Achievement()
+			{
+				Description = "You were the first to place a bet for the next race",
+				Name = "Speedy Gonzales",
+				Icon = "some/speedy.png"
+			};
 
-            Badge seasonWinner = new Badge()
-            {
-                Description = "You won a season",
-                Name = "Champion",
-                Icon = "badges/champion.png"
-            };
+			Badge seasonWinner = new Badge()
+			{
+				Description = "You won a season",
+				Name = "Champion",
+				Icon = "badges/champion.png"
+			};
 
-            UserAccount admin = new UserAccount()
-            {
-                Admin = true,
-                DisplayName = "admin",
-                //Email = "email@admin.com",
-                LastSeen = DateTime.Now,
-                Enabled = true,
-                Registered = DateTime.Now,
-                Achievements = new Collection<Achievement>(),
-                Badges = new Collection<Badge>()
-            };
+			UserAccount admin = new UserAccount()
+			{
+				Admin = true,
+				DisplayName = "admin",
+				//Email = "email@admin.com",
+				LastSeen = DateTime.Now,
+				Enabled = true,
+				Registered = DateTime.Now,
+				Achievements = new Collection<Achievement>(),
+				Badges = new Collection<Badge>()
+			};
 
-            Race melRace = new Race()
-            {
-                City = "Melbourne",
-                Country = "Australia",
-                Picture = "city/melbourne.png",
-                Qualifying = DateTime.Now.AddDays(1),
-                RaceTime = DateTime.Now.AddDays(2)
-            };
+			Race melRace = new Race()
+			{
+				Qualifying = DateTime.Now.AddDays(1),
+				RaceTime = DateTime.Now.AddDays(2)
+			};
 
-            Track melbourne = new Track()
-            {
-                Name = "Melbourne",
-                Picture = "tracks/melbourne",
-                Race = melRace
-            };
+			Track melbourne = new Track()
+			{
+				City = "Melbourne",
+				Country = "Australia",
+				Name = "Melbourne Ring",
+				Picture = "tracks/melbourne",
+				Race = melRace
+			};
 
-            Driver alonso = new Driver()
-            {
-                Name = "Fernando Alonso",
-                Image = "drivers/alonso.png"
-            };
-            Driver vettel = new Driver()
-            {
-                Name = "Sebastian Vettel",
-                Image = "drivers/vettel.png"
-            };
+			Driver alonso = new Driver()
+			{
+				Name = "Fernando Alonso",
+				Image = "drivers/alonso.png"
+			};
+			Driver vettel = new Driver()
+			{
+				Name = "Sebastian Vettel",
+				Image = "drivers/vettel.png"
+			};
 
-            Club mclaren = new Club()
-            {
-                Name = "Mclaren",
-                Logo = "clubs/mclaren.png",
-                Drivers = new Collection<Driver>()
-            };
+			Club mclaren = new Club()
+			{
+				Name = "Mclaren",
+				Logo = "clubs/mclaren.png",
+				Drivers = new Collection<Driver>()
+			};
 
-            Season season2014 = new Season()
-            {
-                Year = 2014,
-                Clubs = new Collection<Club>(),
-                Players = new Collection<UserAccount>(),
-                Tracks = new Collection<Track>()
-            };
+			Season season2014 = new Season()
+			{
+				Year = 2014,
+				Clubs = new Collection<Club>(),
+				Players = new Collection<UserAccount>(),
+				Tracks = new Collection<Track>()
+			};
 
-            mclaren.Drivers.Add(alonso);
-            mclaren.Drivers.Add(vettel);
+			mclaren.Drivers.Add(alonso);
+			mclaren.Drivers.Add(vettel);
 
-            admin.Achievements.Add(firstBet);
-            admin.Achievements.Add(manyLogins);
-            admin.Badges.Add(seasonWinner);
+			admin.Achievements.Add(firstBet);
+			admin.Achievements.Add(manyLogins);
+			admin.Badges.Add(seasonWinner);
 
-            season2014.Players.Add(admin);
-            season2014.Clubs.Add(mclaren);
-            season2014.Tracks.Add(melbourne);
+			season2014.Players.Add(admin);
+			season2014.Clubs.Add(mclaren);
+			season2014.Tracks.Add(melbourne);
 
-            ((AppContext) context).Seasons.Add(season2014);
-            context.SaveChanges();
+			((AppContext) context).Seasons.Add(season2014);
+			context.SaveChanges();
 
-        }
-    }
+		}
+	}
 }

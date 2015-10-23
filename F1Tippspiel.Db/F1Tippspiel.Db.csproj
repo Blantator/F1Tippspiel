@@ -99,7 +99,7 @@
     <Compile Include="Game\Driver.cs" />
     <Compile Include="Game\Race.cs" />
     <Compile Include="Game\RaceBet.cs" />
-    <Compile Include="Game\RaceResult.cs" />
+    <Compile Include="Game\DriverResult.cs" />
     <Compile Include="Game\Season.cs" />
     <Compile Include="Game\Track.cs" />
     <Compile Include="Initializer\BasicInitializer.cs" />

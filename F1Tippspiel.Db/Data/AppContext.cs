@@ -34,6 +34,6 @@ namespace F1Tippspiel.Db.Data
         public DbSet<Race> Races { get; set; }
         public DbSet<Track> Tracks { get; set; }
         public DbSet<Season> Seasons { get; set; }
-        public DbSet<RaceResult> RaceResults { get; set; }
+        public DbSet<DriverResult> RaceResults { get; set; }
     }
 }
