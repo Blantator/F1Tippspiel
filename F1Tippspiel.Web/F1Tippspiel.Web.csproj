@@ -93,6 +93,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
@@ -197,11 +201,13 @@
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\config\interceptors.js" />
     <Content Include="Scripts\app\config\routing.js" />
+    <Content Include="Scripts\app\controllers\adminController.js" />
     <Content Include="Scripts\app\controllers\gameController.js" />
     <Content Include="Scripts\app\controllers\homeController.js" />
     <Content Include="Scripts\app\controllers\rulesController.js" />
     <Content Include="Scripts\app\directives\ui-bootstrap.js" />
     <Content Include="Scripts\app\directives\ui-bootstrap.min.js" />
+    <Content Include="Scripts\app\services\adminService.js" />
     <Content Include="Scripts\app\services\authInterceptorService.js" />
     <Content Include="Scripts\app\services\authService.js" />
     <Content Include="Scripts\app\services\seasonService.js" />
@@ -261,8 +267,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\GameController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Extensions\NavigationExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -272,12 +277,12 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Game\_start.cshtml" />
+    <Content Include="Views\Templates\_game.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_BootstrapLayout.cshtml" />
     <Content Include="Views\Shared\_StartpageLayout.cshtml" />
-    <Content Include="Views\Home\_start.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Templates\_welcome.cshtml" />
+    <Content Include="Views\Templates\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Week.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
@@ -291,7 +296,8 @@
     <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Color.cshtml" />
     <Content Include="Views\Shared\_GameBootstrapLayout.cshtml" />
-    <Content Include="Views\Home\_rules.cshtml" />
+    <Content Include="Views\Templates\_rules.cshtml" />
+    <Content Include="Views\Templates\_admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -304,8 +310,6 @@
     <Folder Include="Auth\" />
     <Folder Include="Models\Account\" />
     <Folder Include="Scripts\app\filters\" />
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Auth\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\F1Tippspiel.Api\F1Tippspiel.Api.csproj">

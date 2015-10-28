@@ -26,7 +26,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#/settings">Einstellungen</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#/admin">Administration</a></li>
+						<li ng-class="{active:currentRoute==='admin'}"><a href="#/admin">Administration</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="" ng-click="logout()">Ausloggen</a></li>
 					</ul>

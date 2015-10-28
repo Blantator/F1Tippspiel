@@ -1,0 +1,114 @@
+﻿<div class="row">
+	<div class="col-md-3">
+		<div class="well sidebar-nav">
+			<ul class="nav nav-pills nav-stacked">
+				<li ng-class="{active:currentRoute==='admin'}"><a href="">Erinnerungen</a></li>
+				<li ng-class="{active:currentRoute==='admin/players'}"><a href="">Registrierte Spieler</a></li>
+				<li ng-class="{active:currentRoute==='admin/results'}"><a href="">Rennergebnisse</a></li>
+				<li ng-class="{active:currentRoute==='admin/qualifying'}"><a href="">Qualifyingergebnisse</a></li>
+			</ul>
+		</div>
+		<div class="well sidebar-nav">
+			<ul class="nav nav-pills nav-stacked">
+				<li ng-class="{active:currentRoute==='admin/tracks'}"><a href="" ng-click="showArea('tracks')">Strecken</a></li>
+				<li ng-class="{active:currentRoute==='admin/drivers'}"><a href="" ng-click="showArea('drivers')">Fahrer</a></li>
+				<li ng-class="{active:currentRoute==='admin/teams'}"><a href="" ng-click="showArea('teams')">Rennställe</a></li>
+				<li ng-class="{active:currentRoute==='admin/dates'}"><a href="">Termine</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>{{currentAdminArea}}</h1>
+				<div ng-hide="openArea!=='reminders'"></div>
+				<div ng-hide="openArea!=='players'"></div>
+				<div ng-hide="openArea!=='results'"></div>
+				<div ng-hide="openArea!=='qualifying'"></div>
+				<div ng-hide="openArea!=='tracks'">
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Stadt</th>
+								<th>Land</th>
+								<th>Bild</th>
+								<th style="text-align:right;">
+									<button type="button" class="btn btn-xs" title="Neue Strecke hinzufügen" ng-click="addNewTrack()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+									<button type="button" class="btn btn-xs" title="Streckenliste aktualisieren" ng-click="refreshConfiguredTracks()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-hide="isLoadingConfiguredDrivers==false">
+								<td colspan="5">
+									<uib-progressbar class="progress-striped active" value="dynamic" type="info"></uib-progressbar>
+								</td>
+							</tr>
+							<tr ng-repeat="track in configuredTracks">
+								<td>{{track.trackId}}</td>
+								<td>{{track.name}}</td>
+								<td>{{track.city}}</td>
+								<td>{{track.country}}</td>
+								<td>{{track.picture}}</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div ng-hide="openArea!=='drivers'">
+					<table class="table table-condensed">
+						<thead><tr><th>Id</th><th>Name</th><th>Bild</th>
+							   	<th style="text-align:right;">
+			  						<button type="button" class="btn btn-xs" title="Neuen Fahrer hinzufügen" ng-click="addNewDriver()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+							   		<button type="button" class="btn btn-xs" title="Fahrerliste aktualisieren" ng-click="refreshConfiguredPlayers()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+							   	</th></tr></thead>
+						<tbody>
+							<tr ng-hide="isLoadingConfiguredDrivers==false">
+								<td colspan="5">
+									<uib-progressbar class="progress-striped active" value="dynamic" type="info"></uib-progressbar>
+								</td>
+							</tr>
+							<tr ng-repeat="driver in configuredDrivers">
+								<td>{{driver.driverId}}</td>
+								<td>{{driver.name}}</td>
+								<td>{{driver.image}}</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div ng-hide="openArea!=='teams'">
+					<table class="table table-condensed">
+						<thead><tr><th>Id</th><th>Name</th><th>Fahrer</th><th>Logo</th>
+							   	<th style="text-align:right;">
+			  	<button type="button" class="btn btn-xs" title="Neues Team hinzufügen" ng-click="addNewTeam()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+							   		<button type="button" class="btn btn-xs" title="Teamliste aktualisieren" ng-click="refreshConfiguredTeams()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+							   	</th></tr></thead>
+						<tbody>
+							<tr ng-hide="isLoadingConfiguredDrivers==false">
+								<td colspan="5">
+									<uib-progressbar class="progress-striped active" value="dynamic" type="info"></uib-progressbar>
+								</td>
+							</tr>
+							<tr ng-repeat="team in configuredTeams">
+								<td>{{team.clubId}}</td>
+								<td>{{team.name}}</td>
+								<td>
+									<ul>
+										<li ng-repeat="driver in team.drivers">{{driver.name}}</li>
+									</ul>
+								</td>
+								<td>{{team.logo}}</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div ng-hide="openArea!=='dates'"></div>
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -33,12 +33,6 @@
 			});
 		};
 
-		var _logout = function () {
-			authService.logout();
-			$location.path('/');
-		};
-
-
 		/**
 		 * determine the area of the application the user is currently in
 		 * to hilight the menu link on the interface accordingly
@@ -53,7 +47,6 @@
 		};
 
 		init();
-		$rootScope.logout = _logout;
 		$scope.refreshPlayerStandings = _loadPlayerStandings;
 	}
 ]);

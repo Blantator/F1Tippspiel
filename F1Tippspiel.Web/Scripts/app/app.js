@@ -13,6 +13,12 @@ var tippspiel = angular.module('tippspiel',
 		'ui.bootstrap'
 	]);
 
-tippspiel.run(['authService', function (authService) {
+tippspiel.run(['$rootScope', '$location', 'authService', function ($rootScope, $location, authService) {
 	authService.fillAuthData();
+
+	var _logout = function () {
+		authService.logout();
+		$location.path('/');
+	};
+	$rootScope.logout = _logout;
 }]);

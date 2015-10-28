@@ -4,23 +4,27 @@ angular.module('tippspiel.config')
 	        .when('/',
 	        {
 	            controller: 'homeController',
-	            templateUrl: '/home/start'
+	            templateUrl: '/templates/welcome'
 	        })
 	        .when('/game',
 	        {
 	            controller: 'gameController',
-	            templateUrl: '/game/start'
+	            templateUrl: '/templates/game'
 	        })
-			
 	        .when('/rules',
 	        {
 	            controller: 'rulesController',
-	            templateUrl: '/home/rules'
+	            templateUrl: '/templates/rules'
+	        })
+			.when('/admin',
+	        {
+	        	controller: 'adminController',
+	        	templateUrl: '/templates/admin'
 	        })
 	        .when('/edit/:customerId',
 	        {
 	            controller: 'HomeController',
-	            templateUrl: '/game/edit'
+	            templateUrl: '/templates/edit'
 	        })
 	        .otherwise({ redirectTo: '/' });
 }]);

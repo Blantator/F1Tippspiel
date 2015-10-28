@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
+using System.Security.Principal;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -97,12 +98,13 @@ namespace F1Tippspiel.Api.Providers
 				account = (UserAccount)user;
 			}
 
-			string role = account.Admin ? "admin" : "user";
+			string role = account.Admin ? "Admin" : "User";
 
+			
 			var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 			identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
 			identity.AddClaim(new Claim("sub", context.UserName));
-			identity.AddClaim(new Claim("role", role));
+			identity.AddClaim(new Claim(ClaimTypes.Role, role));
 
 			var props = new AuthenticationProperties(new Dictionary<string, string>
 			{
@@ -127,7 +129,7 @@ namespace F1Tippspiel.Api.Providers
 			}
 
 			var newIdentity = new ClaimsIdentity(context.Ticket.Identity);
-			newIdentity.AddClaim(new Claim("newClaim", "newValue"));
+			//newIdentity.AddClaim(new Claim("newClaim", "newValue"));
 
 			var newTicket = new AuthenticationTicket(newIdentity, context.Ticket.Properties);
 			context.Validated(newTicket);
