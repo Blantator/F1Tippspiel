@@ -20,7 +20,19 @@ namespace F1Tippspiel.Api.Controllers
 		{
 			using (AppContext db = new AppContext())
 			{
-				List<Driver> drivers = db.Drivers.ToList();
+				List<Club> teams = db.Seasons
+					.Include("Clubs")
+					.Include("Clubs.Drivers")
+					.AsNoTracking()
+					.OrderByDescending(o => o.Year)
+					.FirstOrDefault()
+					.Clubs.ToList();
+
+				List<Driver> drivers = new List<Driver>();
+				foreach(Club c in teams)
+				{
+					c.Drivers.ToList().ForEach(d => { drivers.Add(d); });
+				}
 				if (drivers != null)
 				{
 					return Ok(drivers);
@@ -38,7 +50,13 @@ namespace F1Tippspiel.Api.Controllers
 		{
 			using (AppContext db = new AppContext())
 			{
-				List<Club> teams = db.Clubs.Include("Drivers").AsNoTracking().ToList();
+				List<Club> teams = db.Seasons
+					.Include("Clubs")
+					.Include("Clubs.Drivers")
+					.AsNoTracking()
+					.OrderByDescending(o => o.Year)
+					.FirstOrDefault()
+					.Clubs.ToList(); 
 				if(teams != null)
 				{
 					return Ok(teams);
@@ -56,7 +74,39 @@ namespace F1Tippspiel.Api.Controllers
 		{
 			using (AppContext db = new AppContext())
 			{
-				List<Track> tracks = db.Tracks.Include("Race.QualifyingResults").Include("Race.Results").AsNoTracking().ToList();
+				List<Track> tracks = db.Seasons
+					.Include("Tracks")
+					.Include("Tracks.Race.QualifyingResults")
+					.Include("Tracks.Race.Results")
+					.AsNoTracking()
+					.OrderByDescending(o => o.Year)
+					.FirstOrDefault()
+					.Tracks.ToList();
+				if (tracks != null)
+				{
+					return Ok(tracks);
+				}
+				else
+				{
+					return Ok(new LinkedList<Club>());
+				}
+			}
+		}
+
+		[Route("dates")]
+		[HttpGet]
+		public async Task<IHttpActionResult> Dates()
+		{
+			using (AppContext db = new AppContext())
+			{
+				List<Track> tracks = db.Seasons
+					.Include("Tracks")
+					.Include("Tracks.Race.QualifyingResults")
+					.Include("Tracks.Race.Results")
+					.AsNoTracking()
+					.OrderByDescending(o => o.Year)
+					.FirstOrDefault()
+					.Tracks.ToList();
 				if (tracks != null)
 				{
 					return Ok(tracks);
