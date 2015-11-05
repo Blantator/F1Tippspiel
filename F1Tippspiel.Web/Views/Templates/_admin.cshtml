@@ -31,8 +31,8 @@
 							<tr>
 								<th>Id</th>
 								<th>Name</th>
-								<th>Stadt</th>
-								<th>Land</th>
+								<th>Ort</th>
+								<th>Rennen</th>
 								<th>Bild</th>
 								<th style="text-align:right;">
 									<button type="button" class="btn btn-xs" title="Neue Strecke hinzufügen" ng-click="addNewTrack()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
@@ -49,8 +49,11 @@
 							<tr ng-repeat="track in configuredTracks">
 								<td>{{track.trackId}}</td>
 								<td>{{track.name}}</td>
-								<td>{{track.city}}</td>
-								<td>{{track.country}}</td>
+								<td>{{track.country}} ({{track.city}})</td>
+								<td>
+									<span ng-hide="track.race === null">Rennen: {{track.race.raceTime | date:'medium'}} - Id: {{track.race.raceId}}</span>
+									<span ng-hide="track.race !== null"><span class="label label-warning">Noch kein Rennen hinzugefügt!</span></span>
+								</td>
 								<td>{{track.picture}}</td>
 								<td></td>
 							</tr>
@@ -131,8 +134,8 @@
 								<td>{{track.trackId}}</td>
 								<td>{{track.name}}</td>
 								<td>{{track.city}}</td>
-								<td>{{track.race.qualifying}}</td>
-								<td>{{track.race.raceTime}}</td>
+								<td>{{track.race.qualifying | date:'medium'}}</td>
+								<td>{{track.race.raceTime | date:'medium'}}</td>
 								<td></td>
 							</tr>
 						</tbody>
